@@ -1,59 +1,3 @@
-// The specific letters that the user typed.
-var computerChoices = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-// Setting for zero
-var wins = 0;
-var losses = 0;
-var guessesLeft = 9;
-var letterUser = [];
-var eachofLetters = null;
-
-
-// Sets the computerGuess variable equal to a random choice from the computerChoice array.
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
-function countGuessesLeft() {
-	document.querySelector("#guessesLeft").innerHTML = "Guesses Left: " + guessesLeft;
-}
-
-function farUserGuesses() {
-	document.querySelector("#letter").innerHTML = "Your Guesses so far: " + letterUser.join(' ');
-}
-
-countGuessesLeft();
-
-var restart = function() {
-	guessesLeft = 9;
-	letterUser = [];
-	var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-}
-
-// When the user presses a key, it will run the following function..
-document.onkeyup = function(event) {
-	guessesLeft--;
-
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	letterUser.push(userGuess);
-	countGuessesLeft();
-	farUserGuesses();
-
-	if (userGuess === computerGuess){
-		wins++;
-		document.querySelector("#wins").innerHTML = "Wins: " + wins;
-		restart();
-	} 
-	else if (guessesLeft === 0) {
-		losses++;
-		document.querySelector("#lose").innerHTML = "Loses: " + losses;
-		restart();
-	}
-  };
-
-//--------------------------------   SOLUTION   -----------------------------------
-
-// GLOBAL VARIABLES
-// =================================================================
 
 // Crystal Variables
 var crystal = {
@@ -80,16 +24,15 @@ var crystal = {
   };
   
   // Scores (Current and Target)
-  var currentScore = 0;
-  var targetScore = 0;
+  var clientScore = 0;
+  var computerScore = 0;
   
   // Wins and Losses
-  var winCount = 0;
-  var lossCount = 0;
+  var winCounter = 0;
+  var lossCounter = 0;
   
   
   // FUNCTIONS
-  // =================================================================
   
   // Helper Function for getting random numbers
   var getRandom = function(min, max) {
@@ -100,10 +43,10 @@ var crystal = {
   var startGame = function() {
   
 	// Reset the Current Score
-	currentScore = 0;
+	clientScore = 0;
   
 	// Set a new Target Score (between 19 and 120)
-	targetScore = getRandom(19, 120);
+	computerScore = getRandom(19, 120);
   
 	// Set different values for each of the crystals (between 1 and 12)
 	crystal.blue.value = getRandom(1, 12);
@@ -112,13 +55,13 @@ var crystal = {
 	crystal.yellow.value = getRandom(1, 12);
   
 	// Change the HTML to reflect all of these changes
-	$("#your-score").text(currentScore);
-	$("#target-score").text(targetScore);
+	$("#your-score").text(clientScore);
+	$("#total-score").text(computerScore);
   
   
 	// Testing Console
 	console.log("-----------------------------------");
-	console.log("Target Score: " + targetScore);
+	console.log("Total Score: " + computerScore);
 	console.log("Blue: " + crystal.blue.value + " | Green: " + crystal.green.value + " | Red: " + crystal.red.value +
 	  " | Yellow: " + crystal.yellow.value);
 	console.log("-----------------------------------");
@@ -128,29 +71,29 @@ var crystal = {
   var checkWin = function() {
   
 	// Check if currentScore is larger than targetScore
-	if (currentScore > targetScore) {
+	if (clientScore > computerScore) {
 	  alert("Sorry. You lost!");
 	  console.log("You Lost");
   
 	  // Add to Loss Counter
-	  lossCount++;
+	  lossCounter++;
   
 	  // Change Loss Count HTML
-	  $("#loss-count").text(lossCount);
+	  $("#loss-count").text(lossCounter);
   
 	  // Restart the game
 	  startGame();
 	}
   
-	else if (currentScore === targetScore) {
+	else if (clientScore === computerScore) {
 	  alert("Congratulations! You Won!");
 	  console.log("You Won!");
   
 	  // Add to the Win Counter
-	  winCount++;
+	  winCounter++;
   
 	  // Change Win Count HTML
-	  $("#win-count").text(winCount);
+	  $("#win-count").text(winCounter);
   
 	  // Restart the game
 	  startGame();
@@ -162,16 +105,16 @@ var crystal = {
   var addValues = function(clickedCrystal) {
   
 	// Change currentScore
-	currentScore += clickedCrystal.value;
+	clientScore += clickedCrystal.value;
   
 	// Change the HTML to reflect changes in currentScore
-	$("#your-score").text(currentScore);
+	$("#your-score").text(clientScore);
   
 	// Call the checkWin Function
 	checkWin();
   
 	// Testing Console
-	console.log("Your Score: " + currentScore);
+	console.log("Your Score: " + clientScore);
   };
   
   // MAIN PROCESS

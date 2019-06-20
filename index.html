@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Psychic Game</title>
+	<title>Crystall Collector</title>
 	<!-- Bootstrap File -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <!-- Reset/CSS File -->
@@ -11,176 +11,109 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">    
 </head>
 <body>
-    <div class="jumbotron">
-		<h1 class="text-center"><strong>The Psychic Game</strong></h1>
-		<br>
-		<p class="lead">Guess what letter I'm thinking of....</p>
-	</div>	
-<div class="container">
-	<div class="row">
-		<div class="col-md-4">
-			<img src="assets/images/crystalball.jpg" class="thumbnail" id="crystalball-image" alt="crystal ball" height=200px width=320px>
-		</div>
-		<div class="col-md-4">
-			<ul id="space" class="list-group">
-				<li class="list-group-item" id="wins">Wins:</li>
-				<li class="list-group-item" id="lose">Losses:</li>
-				<li class="list-group-item" id="guessesLeft">Guesses Left:</li>
-				<li class="list-group-item" id="letter">Your Guesses so far:</li>
-			</ul>
-		</div>
-		<div class="col-md-4">
-			<img src="assets/images/Crystalball2.jpg" class="thumbnail" id="crystalball2-image" alt="psychic baby" height=200px width=320px>
-		</div>
-	</div>
-</div>
+    <div class="container">
 
-<div class="footer">
+        <!------------------------------------------------------------ HEADER --------------------------------------------------------------------------------->
+        <div class="jumbotron" style="background-color: lightcoral; color: gold;">
+          <div class="container">
+            <h1 class="text-center"> Crystal Collector </h1>
+          </div>
+        </div>
+      <!------------------------------------------------ ROW 1 ------------------------------------------------------------------------------------------------->
+      <div class="row">
+
+        <!---------------- INSTRUCTIONS ------------------->
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header">
+              Instructions
+            </div>
+            <div class="card-body">
+              <p>
+                <small> Welcome to the "Crystal Mines". You will have to match a randomly generated sparkle score throughout the game.
+                  This can be acheieved by "mining" (clicking) on the crystals shown below. You will add a specific amount of points to your total score.
+                  But be carful, each newround will generate a different sparkle score!
+                  You win the game by matching your sparkle score to the randomly generated number, but you will lose the game if
+                  your total sparkle score goes above the random number. Good luck!</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!------------------------------------------------------------ ROW 2  ------------------------------------------------------------------------------------------>
+        <div class="row">
+    
+          <!------------- TOTAL SPARKLE SCORE ------------->
+          <div class="col-md-3">
+            <div class="card mb-4">
+              <div class="card-header">Total Sparkle Score</div>
+              <div class="card-body">
+                <h3 class="text-center" id="total-score"></h3>
+              </div>
+            </div>
+          </div>
+    
+          <!-------------- YOUR SPARKLE SCORE --------------->
+          <div class="col-md-3">
+            <div class="card mb-4">
+              <div class="card-header"> Your Sparkle Score </div>
+              <div class="card-body">
+                <h3 class="text-center" id="your-score"></h3>
+              </div>
+            </div>
+          </div>
+    
+          <!-------------- CRYSTAL IMAGE GALLERY -------------->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header"> Select A Crystal </div>
+              <div class="card-body text-center">
+                <img src="assets/images/blue.png" id="blue">
+                <img src="assets/images/green.png" id="green">
+                <img src="assets/images/red.png" id="red">
+                <img src="assets/images/yellow.png" id="yellow">
+              </div>
+            </div>
+          </div>
+    
+        </div>
+    
+    
+        <!-----------------------------------------------------   ROW 3  --------------------------------------------------------------->
+        <div class="row">
+    
+          <!----------------- WIN COUNTER -------------------->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header"> Wins </div>
+              <div class="card-body">
+                <h3 class="text-center" id="win-count">0</h3>
+              </div>
+            </div>
+          </div>
+    
+          <!----------------- LOSS COUNTER ------------------->
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header"> Losses </div>
+              <div class="card-body">
+                <h3 class="text-center" id="loss-count">0</h3>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    </div>
+    <!------------------------------------ JQuery --------------------------------------------------------------------->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------------------------------------ Javascript game.js -------------------------------------------------------->
+      <script src="assets/javascript/game.js"></script>
+
+  <!-------------------------------------------------------------------- FOOTER ---------------------------------------------------------------->
+  <div class="footer">
 	&copy;Copyright 
-</div>
-
-<!-- Javascript game.js -->
-<script type="text/javascript" src="assets/JavaScript/game.js"></script>
-</body>
-</html>
-
-<!--================================ SOLUTION ==============================================-->
-
-<!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Crystal Collector</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
-  />
-
-</head>
-
-<body>
-
-  <div class="container">
-
-    <!-- Crystal Collector Jumbotron -->
-    <div class="jumbotron" style="background-color: purple; color: white;">
-      <div class="container">
-        <h1 class="text-center">
-          <strong>Crystal Collector</strong>
-        </h1>
-      </div>
-    </div>
-
-
-    <!-- Instructions -->
-    <div class="row">
-
-      <!-- Instructions Container -->
-      <div class="col-md-12">
-        <div class="card mb-4">
-          <div class="card-header">
-            Instructions
-          </div>
-          <div class="card-body">
-            <p>
-              <small>You will be given a random number at the start of the game. There are four crystals below.
-                By clicking on a crystal you will add a specific amount of points to your total score.
-                You win the game by matching your total score to random number, you lose the game if
-                your total score goes above the random number. The value of each crystal is hidden from
-                you until you click on it. Each time when the game starts, the game will change the values
-                of each crystal</small>
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Scores and Crystals  -->
-    <div class="row">
-
-      <!-- Target Score -->
-      <div class="col-md-3">
-        <div class="card mb-4">
-          <div class="card-header">
-            Target Score
-          </div>
-          <div class="card-body">
-            <h3 class="text-center" id="target-score"></h3>
-          </div>
-        </div>
-      </div>
-
-      <!-- Your Score -->
-      <div class="col-md-3">
-
-        <div class="card mb-4">
-          <div class="card-header">
-            Your Score
-          </div>
-          <div class="card-body">
-            <h3 class="text-center" id="your-score"></h3>
-          </div>
-        </div>
-      </div>
-
-      <!-- Crystals -->
-      <div class="col-md-6">
-
-        <div class="card mb-4">
-          <div class="card-header">
-            Crystal Selection
-          </div>
-          <div class="card-body text-center">
-            <img src="images/blue.png" id="blue">
-            <img src="images/green.png" id="green">
-            <img src="images/red.png" id="red">
-            <img src="images/yellow.png" id="yellow">
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- Counters Row -->
-    <div class="row">
-
-      <!-- Win Count -->
-      <div class="col-md-6">
-        <div class="card mb-4">
-          <div class="card-header">
-            Win Count
-          </div>
-          <div class="card-body">
-            <h3 class="text-center" id="win-count">0</h3>
-          </div>
-        </div>
-      </div>
-
-      <!-- Loss Count -->
-      <div class="col-md-6">
-
-        <div class="card mb-4">
-          <div class="card-header">
-            Loss Count
-          </div>
-          <div class="card-body">
-            <h3 class="text-center" id="loss-count">0</h3>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
 
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Main Game Logic  -->
-  <script src="logic.js"></script>
 </body>
-
 </html>
